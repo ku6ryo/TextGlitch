@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "ES2015",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "lib": [
+      "ES2020",
+      "DOM"
+    ],
+    "typeRoots": ["./@types"],
+  }
+}
