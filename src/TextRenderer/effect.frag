@@ -14,11 +14,11 @@ const vec3 subColor = vec3(1.0) - baseColor;
 void main() {
   float noise = 0.;
   if (uRandom > 0.9) {
-    noise = texture2D(uNoise, fract(vUv + vec2(uTime * 10. * uRandom, 0.1))).r - 0.5;
+    noise = texture2D(uNoise, fract(vUv + vec2(uRandom, uRandom))).r - 0.5;
   }
 
-  float text0 = texture2D(uText, vUv + vec2(noise * 0.04, 0.)).a;
-  float text1 = texture2D(uText, vUv + vec2(- noise * 0.04, 0.)).a;
+  float text0 = texture2D(uText, vUv + vec2(noise * 0.1, 0.)).a;
+  float text1 = texture2D(uText, vUv + vec2(- noise * 0.1, 0.)).a;
   vec3 col0 = baseColor * text0;
   vec3 col1 = subColor * text1;
   vec3 col = col0 + col1;
