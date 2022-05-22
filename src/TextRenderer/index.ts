@@ -1,10 +1,9 @@
 import loadImage from "../loadImage"
-import noiseTextureUrl from "./perlin.png"
+import noiseTextureUrl from "./thunder.png"
 import textTextureUrl from "./potential.png"
 import vertexShaderSource from "./effect.vert";
 import fragmentShaderSource from "./effect.frag";
 import { createShader, createProgram } from "../shader";
-import thunderTextureUrl from "./thunder.png";
 
 export class TextRenderer {
 
@@ -20,10 +19,6 @@ export class TextRenderer {
   constructor() {
     this.#canvas = document.createElement('canvas')
     this.#tmpCanvas = document.createElement('canvas')
-    const tmpContext = this.#tmpCanvas.getContext("2d")!
-    tmpContext.imageSmoothingEnabled = true
-    tmpContext.translate(0.5, 0.5);
-    document.body.appendChild(this.#tmpCanvas)
     const gl = this.getWebGLContext()
     this.#vertShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource)
     this.#fragShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource)
@@ -31,7 +26,7 @@ export class TextRenderer {
   }
 
   async setUp() {
-    this.#perlinTexture = await loadImage(thunderTextureUrl)
+    this.#perlinTexture = await loadImage(noiseTextureUrl)
     this.#textTexture = await loadImage(textTextureUrl)
   }
 
@@ -91,7 +86,7 @@ export class TextRenderer {
     const tmpContext = this.#tmpCanvas.getContext("2d")!;
     tmpContext.drawImage(this.#textTexture, x, y, textSize, textSize)
 
-    const textTexture = this.createTexture(this.#tmpCanvas)
+    const textTexture = this.createTexture(this.#textTexture)
     const uTextLocation = gl.getUniformLocation(this.#program, "uText");
     gl.uniform1i(uTextLocation, 2);
 

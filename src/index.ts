@@ -12,8 +12,8 @@ async function main() {
 
   const mainCanvas = document.createElement("canvas")
   const mainContext = mainCanvas.getContext("2d")!
-  mainCanvas.style.height = "100vh"
-  mainCanvas.style.width = "100vw"
+  mainCanvas.style.height = "256px"
+  mainCanvas.style.width = "256px"
   document.querySelector(".container")!.appendChild(mainCanvas)
 
   const rect = document.body.getBoundingClientRect()

@@ -14,7 +14,7 @@ const vec3 subColor = vec3(1.0) - baseColor;
 void main() {
   float noise = 0.;
   if (uRandom > 0.9) {
-    noise = texture2D(uNoise, fract(vUv + vec2(uRandom, uRandom))).r - 0.5;
+    noise = texture2D(uNoise, fract(vUv + vec2(uRandom, uRandom) * 0.1)).r - 0.5;
   }
 
   float text0 = texture2D(uText, vUv + vec2(noise * 0.15, noise * 0.05)).a;
