@@ -23,6 +23,7 @@ export class TextRenderer {
     const tmpContext = this.#tmpCanvas.getContext("2d")!
     tmpContext.imageSmoothingEnabled = true
     tmpContext.translate(0.5, 0.5);
+    document.body.appendChild(this.#tmpCanvas)
     const gl = this.getWebGLContext()
     this.#vertShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource)
     this.#fragShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource)

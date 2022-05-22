@@ -17,8 +17,8 @@ void main() {
     noise = texture2D(uNoise, fract(vUv + vec2(uRandom, uRandom))).r - 0.5;
   }
 
-  float text0 = texture2D(uText, vUv + vec2(noise * 0.1, 0.)).a;
-  float text1 = texture2D(uText, vUv + vec2(- noise * 0.1, 0.)).a;
+  float text0 = texture2D(uText, vUv + vec2(noise * 0.15, noise * 0.05)).a;
+  float text1 = texture2D(uText, vUv + vec2(- noise * 0.15, -noise * 0.05)).a;
   vec3 col0 = baseColor * text0;
   vec3 col1 = subColor * text1;
   vec3 col = col0 + col1;
